@@ -70,7 +70,7 @@ const Home = () => {
                 </Text>
               </GridItem>
               <GridItem textAlign="center">
-                <Text lang="ar" fontSize="20px">
+                <Text lang="ar" fontSize="20px" fontFamily="Uthmanic">
                   {item.nama}
                 </Text>
                 <Text fontSize="13px" fontWeight="300">

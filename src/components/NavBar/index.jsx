@@ -12,9 +12,12 @@ const NavBar = () => {
       justifyContent="space-between"
       p={5}
       position="fixed"
-      w="400px"
-      top={0}
+      maxW="400px"
+      w="full"
       backgroundColor="white"
+      top="0"
+      left="50%"
+      transform="translateX(-50%)"
     >
       {path.pathname === "/" ? (
         <div></div>

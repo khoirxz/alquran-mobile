@@ -76,7 +76,12 @@ const Surah = () => {
                     <Box>
                       <Box textAlign="right" my={4}>
                         <Box>
-                          <Text lang="ar" fontWeight="600" fontSize="32px">
+                          <Text
+                            lang="ar"
+                            fontWeight="600"
+                            fontSize="32px"
+                            fontFamily="Uthmanic"
+                          >
                             {item.ar}
                           </Text>
                         </Box>
