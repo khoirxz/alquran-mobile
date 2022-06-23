@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { NavBar } from "./components/";
+import { Footer, NavBar } from "./components/";
 
 import { Home, Surah } from "./pages";
 
@@ -24,6 +24,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/surah/:nomor" element={<Surah />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </Box>
   );

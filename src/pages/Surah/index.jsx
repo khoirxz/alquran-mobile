@@ -11,7 +11,7 @@ import {
   useDisclosure,
   Progress,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { BsInfo } from "react-icons/bs";
 
 import { ContentSection } from "../../components";
@@ -40,7 +40,13 @@ const Surah = () => {
   ) : (
     <ContentSection titlePage={surah.nama_latin}>
       <Box py={3}>
-        <Heading as="h1" size="xl" textAlign="center" my={5}>
+        <Heading
+          as="h1"
+          size="xl"
+          textAlign="center"
+          my={5}
+          fontFamily="Uthmanic"
+        >
           {surah.nama}
         </Heading>
 
@@ -73,7 +79,7 @@ const Surah = () => {
                     <Box>
                       {item.surah}:{item.nomor}
                     </Box>
-                    <Box>
+                    <Box w="full">
                       <Box textAlign="right" my={4}>
                         <Box>
                           <Text
@@ -94,8 +100,10 @@ const Surah = () => {
                           />
                         </Box>
                       </Box>
-                      <Box>
-                        <Text fontSize="16px">{item.idn}</Text>
+                      <Box ml={1}>
+                        <Text textAlign="left" fontSize="16px">
+                          {item.idn}
+                        </Text>
                       </Box>
                     </Box>
                   </Box>
@@ -106,6 +114,32 @@ const Surah = () => {
           )}
         </Box>
       </Box>
+
+      <Flex justifyContent="space-between">
+        {surah?.surat_sebelumnya === false ? (
+          <Button disabled>Prev</Button>
+        ) : (
+          <Button
+            colorScheme="whatsapp"
+            as={Link}
+            to={`/surah/${surah?.surat_sebelumnya?.nomor}`}
+          >
+            Prev
+          </Button>
+        )}
+
+        {surah?.surat_selanjutnya === false ? (
+          <Button disabled>Next</Button>
+        ) : (
+          <Button
+            colorScheme="whatsapp"
+            as={Link}
+            to={`/surah/${surah?.surat_selanjutnya?.nomor}`}
+          >
+            Next
+          </Button>
+        )}
+      </Flex>
 
       <ModalSection
         isOpen={isOpen}
