@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
 
 const Navbar: React.FC<{
@@ -5,9 +6,11 @@ const Navbar: React.FC<{
   setDrawer: (value: boolean) => void;
 }> = ({ drawer, setDrawer }) => {
   return (
-    <nav className="flex p-3 justify-between items-center">
+    <nav className="flex py-3 px-5 justify-between items-center shadow-md">
       <div>
-        <h1 className="font-bold text-2xl">Al-Quran Kareem</h1>
+        <Link to="/">
+          <h1 className="font-bold text-2xl font-title">Al-Quran Kareem</h1>
+        </Link>
       </div>
       <div>
         <button

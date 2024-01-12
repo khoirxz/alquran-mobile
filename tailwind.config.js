@@ -4,7 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: `'Inter Tight', sans-serif`,
+        primary: `"IBM Plex Sans", sans-serif`,
+        title: `"DM Serif Display", serif`,
+        arabic: `"Amiri Quran", serif`,
       },
     },
   },

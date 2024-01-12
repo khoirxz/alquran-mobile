@@ -29,12 +29,12 @@ const Drawer: React.FC<{
             <div className="fixed">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-500"
-                enterFrom="opacity-0 translate-x-7"
-                enterTo="opacity-100 translate-x-0"
-                leave="ease-in duration-500"
-                leaveFrom="opacity-100 translate-x-0"
-                leaveTo="opacity-0 translate-x-7"
+                enter="duration-500"
+                enterFrom="translate-x-full"
+                enterTo="translate-x-0"
+                leave="duration-500"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full"
               >
                 <Dialog.Panel className="min-h-screen transform overflow-hidden bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
