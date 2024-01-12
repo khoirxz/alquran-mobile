@@ -1,10 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Surah } from "./pages";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/id/:id",
+    element: <Surah />,
   },
 ]);
 

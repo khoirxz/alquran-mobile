@@ -1,5 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Surahname font */
+@font-face {
+  font-family: "surahnames";
+  src: url("/src/assets/fonts/sura_names.woff2"),
+    url("/src/assets/fonts/sura_names.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UthmanicHafs";
+  src: url("/src/assets/fonts/UthmanicHafs1Ver18.ttf") format("truetype"),
+    url("/src/assets/fonts/UthmanicHafs1Ver18.woff2") format("woff2");
+  font-display: swap;
+}

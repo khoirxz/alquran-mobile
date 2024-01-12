@@ -7,6 +7,8 @@ export default {
         primary: `"IBM Plex Sans", sans-serif`,
         title: `"DM Serif Display", serif`,
         arabic: `"Amiri Quran", serif`,
+        surahname: `surahnames`,
+        uthmani: `UthmanicHafs`,
       },
     },
   },
