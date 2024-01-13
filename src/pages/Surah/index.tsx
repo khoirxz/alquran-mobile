@@ -2,14 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import { IoMdBook } from "react-icons/io";
+
 import Layout from "@/layout";
-import Logo from "@/assets/Quran-logo.svg";
 
 import { DataContext } from "@/Context";
 
 import { ContextContainerProps, Verse } from "@/types/interfaces";
 import { BASE_URL } from "@/api";
 import { AyahTranslation } from "@/types/translation";
+import { formatIconSurah } from "@/utils/formatSurah";
+import { Skeleton } from "@/components";
 
 const Surah: React.FC = () => {
   const { getScriptAyah, isLoading, ayah } =
@@ -26,13 +29,18 @@ const Surah: React.FC = () => {
       <div className="flex flex-col w-11/12 md:w-4/5 mx-auto">
         {/* HERO */}
         <div className="pt-20 px-14">
-          <img src={Logo} alt="Logo" className="w-52 mx-auto" />
+          <p className="font-surahname text-6xl text-center">
+            {formatIconSurah(Number(id))}surah
+          </p>
         </div>
         {/* END HERO */}
 
         <main className="mt-12">
           {isLoading ? (
-            <p>Loading</p>
+            <div className="grid grid-cols-1 gap-10">
+              <Skeleton height="150px" />
+              <Skeleton height="150px" />
+            </div>
           ) : (
             <div className="grid grid-cols-1 gap-10">
               {ayah.verses.map((item, i) => (
@@ -48,13 +56,26 @@ const Surah: React.FC = () => {
 
 const ListAyah: React.FC<{ data: Verse }> = ({ data }) => {
   return (
-    <div>
-      <p className="font-uthmani text-right text-4xl">
-        {data.text_uthmani}{" "}
-        <ArabicNumber number={Number(data.verse_key.split(":")[1])} />
-      </p>
-      {data.id}
-      <Translate verse_key={data.verse_key} />
+    <div className="flex justify-between gap-8 border-b pb-9">
+      <div className="flex flex-col justify-end me-6">
+        <div className="flex flex-col items-center gap-3">
+          <p className="text-gray-400 text-sm">{data.verse_key}</p>
+          <button className="rounded-full group active:bg-sky-300 hover:bg-sky-200 p-1">
+            <IoMdBook
+              size="1.3rem"
+              className="group-hover:text-sky-500 text-gray-400"
+            />
+          </button>
+        </div>
+      </div>
+      <div className="flex-1">
+        <p className="font-uthmani text-right text-4xl leading-relaxed">
+          {data.text_uthmani}{" "}
+          <ArabicNumber number={Number(data.verse_key.split(":")[1])} />
+        </p>
+
+        <Translate verse_key={data.verse_key} />
+      </div>
     </div>
   );
 };
@@ -119,7 +140,13 @@ const Translate: React.FC<{ verse_key: string }> = ({ verse_key }) => {
   return (
     <>
       {isLoading ? (
-        <p>Loading</p>
+        <div className="flex flex-col justify-between gap-8 w-full">
+          <div className="animate-pulse flex space-x-4">
+            <div className="flex-1 space-y-6 py-1">
+              <div className={`h-5 bg-gray-400 rounded w-full`}></div>
+            </div>
+          </div>
+        </div>
       ) : (
         translateInfo.translations.map((item, i) => (
           <p
