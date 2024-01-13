@@ -56,8 +56,8 @@ const Surah: React.FC = () => {
 
 const ListAyah: React.FC<{ data: Verse }> = ({ data }) => {
   return (
-    <div className="flex justify-between gap-8 border-b pb-9">
-      <div className="flex flex-col justify-end me-6">
+    <div className="flex justify-between gap-3 lg:gap-8 border-b pb-9">
+      <div className="flex flex-col justify-end me-0 lg:me-6">
         <div className="flex flex-col items-center gap-3">
           <p className="text-gray-400 text-sm">{data.verse_key}</p>
           <button className="rounded-full group active:bg-sky-300 hover:bg-sky-200 p-1">

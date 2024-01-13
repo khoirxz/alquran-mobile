@@ -10,6 +10,9 @@ export default {
         surahname: `surahnames`,
         uthmani: `UthmanicHafs`,
       },
+      backgroundImage: {
+        "hero-light": "url('/src/assets/hero-light.png')",
+      },
     },
   },
   plugins: [],

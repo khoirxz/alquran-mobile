@@ -6,7 +6,7 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [drawer, setDrawer] = useState<boolean>(false);
 
   return (
-    <div className="font-primary">
+    <div className="font-primary relative bg-white">
       <Drawer drawer={drawer} setDrawer={setDrawer} />
 
       <Navbar drawer={drawer} setDrawer={setDrawer} />

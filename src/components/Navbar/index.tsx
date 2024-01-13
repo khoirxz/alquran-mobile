@@ -6,7 +6,7 @@ const Navbar: React.FC<{
   setDrawer: (value: boolean) => void;
 }> = ({ drawer, setDrawer }) => {
   return (
-    <nav className="flex py-3 px-5 justify-between items-center shadow-md">
+    <nav className="flex py-3 px-5 justify-between items-center fixed w-full bg-white">
       <div>
         <Link to="/">
           <h1 className="font-bold text-2xl font-title">Al-Quran Kareem</h1>
