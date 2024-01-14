@@ -19,3 +19,16 @@
     url("/src/assets/fonts/UthmanicHafs1Ver18.woff2") format("woff2");
   font-display: swap;
 }
+
+.ham_wasl {
+  color: theme("textColor.purple.500");
+}
+.laam_shamsiyah {
+  color: theme("textColor.green.500");
+}
+.ghunnah {
+  color: theme("textColor.red.500");
+}
+.madda_permissible {
+  color: theme("textColor.yellow.500");
+}

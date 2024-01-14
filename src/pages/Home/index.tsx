@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { IoMdSearch } from "react-icons/io";
 
@@ -10,7 +10,22 @@ import { DataContext } from "@/Context";
 import { ContextContainerProps } from "@/types/interfaces";
 
 const Home: React.FC = () => {
-  const { data, isLoading } = useContext<ContextContainerProps>(DataContext);
+  const { data, isLoading, getAllChapters, setAyah } =
+    useContext<ContextContainerProps>(DataContext);
+
+  useEffect(() => {
+    getAllChapters();
+    setAyah({
+      verses: [],
+      meta: {
+        filters: {
+          chapter_number: "",
+        },
+      },
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Layout>
@@ -19,7 +34,7 @@ const Home: React.FC = () => {
         <div className="bg-hero-light"></div>
         <img src={LogoLight} alt="Logo" className="w-52 mx-auto" />
 
-        <div className="mt-12 flex border p-2 gap-2 rounded-xl w-4/5 lg:w-2/5 mx-auto bg-white">
+        <div className="mt-12 flex p-2 gap-2 rounded-xl w-4/5 lg:w-2/5 mx-auto bg-white shadow-lg">
           <IoMdSearch size="1.7em" color="#9CA3B7" />
           <input placeholder="Cari" className="outline-none text-xl w-full" />
         </div>

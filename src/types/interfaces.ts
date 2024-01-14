@@ -1,9 +1,15 @@
+import { InfoChapter } from "./infoChapter";
+
 export interface ContextContainerProps {
   data: ItemChapters[];
   setData: React.Dispatch<React.SetStateAction<ItemChapters[]>>;
   isLoading: boolean;
+  getAllChapters: () => Promise<void>;
   getScriptAyah: (id: number) => Promise<void>;
   ayah: Ayah;
+  setAyah: React.Dispatch<React.SetStateAction<Ayah>>;
+  getSigleChapter: (id: number) => Promise<void>;
+  infoChapter: InfoChapter;
 }
 
 export interface ItemChapters {
@@ -33,7 +39,7 @@ export interface Ayah {
 export interface Verse {
   id: number;
   verse_key: string;
-  text_uthmani: string;
+  text_uthmani_tajweed: string;
 }
 
 export interface Meta {

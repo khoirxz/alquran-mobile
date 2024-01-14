@@ -28,7 +28,7 @@ const Surah: React.FC = () => {
     <Layout>
       <div className="flex flex-col w-11/12 md:w-4/5 mx-auto">
         {/* HERO */}
-        <div className="pt-20 px-14">
+        <div className="pt-28 px-14">
           <p className="font-surahname text-6xl text-center">
             {formatIconSurah(Number(id))}surah
           </p>
@@ -69,39 +69,17 @@ const ListAyah: React.FC<{ data: Verse }> = ({ data }) => {
         </div>
       </div>
       <div className="flex-1">
-        <p className="font-uthmani text-right text-4xl leading-relaxed">
-          {data.text_uthmani}{" "}
-          <ArabicNumber number={Number(data.verse_key.split(":")[1])} />
-        </p>
+        <p
+          className="font-uthmani text-right text-4xl leading-relaxed"
+          dir="rtl"
+          lang="ar"
+          dangerouslySetInnerHTML={{ __html: data.text_uthmani_tajweed }}
+        ></p>
 
         <Translate verse_key={data.verse_key} />
       </div>
     </div>
   );
-};
-
-const ArabicNumber: React.FC<{ number: number }> = ({ number }) => {
-  // Fungsi untuk mengganti setiap digit dengan karakter Arab
-  const convertToArabic = (digit: string) => {
-    const arabicDigits = [
-      "\u0660",
-      "\u0661",
-      "\u0662",
-      "\u0663",
-      "\u0664",
-      "\u0665",
-      "\u0666",
-      "\u0667",
-      "\u0668",
-      "\u0669",
-    ];
-    return arabicDigits[parseInt(digit, 10)] || digit;
-  };
-
-  // Mengonversi setiap digit dalam angka ke karakter Arab
-  const arabicNumber = String(number).split("").map(convertToArabic).join("");
-
-  return <span className="font-uthmani">{arabicNumber}</span>;
 };
 
 const Translate: React.FC<{ verse_key: string }> = ({ verse_key }) => {
@@ -143,7 +121,7 @@ const Translate: React.FC<{ verse_key: string }> = ({ verse_key }) => {
         <div className="flex flex-col justify-between gap-8 w-full">
           <div className="animate-pulse flex space-x-4">
             <div className="flex-1 space-y-6 py-1">
-              <div className={`h-5 bg-gray-400 rounded w-full`}></div>
+              <div className={`h-5 bg-gray-300 rounded w-full`}></div>
             </div>
           </div>
         </div>
