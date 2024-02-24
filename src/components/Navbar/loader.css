@@ -1,0 +1,9 @@
+.progress {
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  flex-grow: 1;
+  background-color: #0ea5e9;
+  height: 4px;
+  transform-origin: 0%;
+}
