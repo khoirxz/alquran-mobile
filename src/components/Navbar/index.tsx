@@ -47,7 +47,9 @@ const Navbar: React.FC<{
           <div className="pb-1">
             {id ? (
               isLoading ? (
-                <p>Loading</p>
+                <p className="inline font-bold px-5 border-b-[4px] pb-[0.4rem]">
+                  Loading
+                </p>
               ) : (
                 <p className="inline font-bold px-5 border-b-[4px] pb-[0.4rem] border-sky-500">
                   {infoChapter.chapter.name_simple}

@@ -9,6 +9,7 @@ import Layout from "@/layout";
 import { DataContext } from "@/Context";
 
 import { ContextContainerProps, Verse } from "@/types/interfaces";
+import { Verse as Verses } from "@/types/verses";
 import { BASE_URL } from "@/api";
 import { AyahTranslation } from "@/types/translation";
 import { formatIconSurah } from "@/utils/formatSurah";
@@ -76,6 +77,7 @@ const ListAyah: React.FC<{ data: Verse }> = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: data.text_uthmani_tajweed }}
         ></p>
 
+        <VersesAyah verse_key={data.verse_key} />
         <Translate verse_key={data.verse_key} />
       </div>
     </div>
@@ -130,9 +132,65 @@ const Translate: React.FC<{ verse_key: string }> = ({ verse_key }) => {
           <p
             key={i}
             dangerouslySetInnerHTML={{ __html: item.text }}
-            className="mt-5"
+            className="mt-3"
           />
         ))
+      )}
+    </>
+  );
+};
+
+const VersesAyah: React.FC<{ verse_key: string }> = ({ verse_key }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [verses, setVerses] = useState<Verses>({
+    verse: {
+      id: 0,
+      verse_number: 0,
+      verse_key: "",
+      hizb_number: 0,
+      rub_el_hizb_number: 0,
+      ruku_number: 0,
+      manzil_number: 0,
+      page_number: 0,
+      juz_number: 0,
+      words: [],
+    },
+  });
+
+  useEffect(() => {
+    const getVerses = async (verse_key: string) => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(
+          `${BASE_URL}verses/by_key/${verse_key}?language=id&words=true`
+        );
+
+        setIsLoading(false);
+        setVerses(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getVerses(verse_key);
+  }, [verse_key]);
+
+  return (
+    <>
+      {isLoading ? (
+        <div className="flex flex-col justify-between gap-8 w-full">
+          <div className="animate-pulse flex space-x-4">
+            <div className="flex-1 space-y-6 py-1">
+              <div className={`h-5 bg-gray-300 rounded w-full`}></div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="mt-5 text-sm flex gap-1">
+          {verses.verse.words.map((text) => (
+            <span key={text.id}>{text.transliteration.text}</span>
+          ))}
+        </div>
       )}
     </>
   );
