@@ -186,7 +186,7 @@ const VersesAyah: React.FC<{ verse_key: string }> = ({ verse_key }) => {
           </div>
         </div>
       ) : (
-        <div className="mt-5 text-sm flex gap-1">
+        <div className="mt-5 text-sm flex gap-1 flex-wrap">
           {verses.verse.words.map((text) => (
             <span key={text.id}>{text.transliteration.text}</span>
           ))}
